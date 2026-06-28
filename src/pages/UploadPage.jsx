@@ -20,7 +20,7 @@ export default function UploadPage() {
     if (!file) return
 
     // Validate file type
-    if (!ALLOWED_TYPES.includes(file.type) && !file.type.startsWith('image/')) {
+    if (!ALLOWED_TYPES.includes(file.type)) {
       setErrorMessage('Please select a valid image file.')
       setStatus('error')
       setSelectedFile(null)
