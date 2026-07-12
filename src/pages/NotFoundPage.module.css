@@ -7,48 +7,52 @@
 }
 
 .card {
-  background: #fff;
-  border-radius: 1rem;
-  padding: 2.5rem 2rem;
-  max-width: 420px;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.86));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.5rem;
+  padding: 2.25rem 1.75rem;
+  max-width: 480px;
   width: 100%;
   text-align: center;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 24px 70px rgba(2, 6, 23, 0.28);
+  backdrop-filter: blur(18px);
 }
 
 .code {
   font-size: 4rem;
   font-weight: 800;
-  color: #ddd;
+  color: #7dd3fc;
   margin-bottom: 0.25rem;
 }
 
 .title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #111;
+  color: #f8fafc;
   margin-bottom: 0.75rem;
 }
 
 .description {
   font-size: 0.9375rem;
-  color: #555;
+  color: #cbd5e1;
   line-height: 1.6;
   margin-bottom: 1.5rem;
 }
 
 .link {
   display: inline-block;
-  background: #0070f3;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
   color: #fff;
   text-decoration: none;
-  border-radius: 0.625rem;
+  border-radius: 0.875rem;
   padding: 0.75rem 1.5rem;
   font-size: 0.9375rem;
-  font-weight: 600;
-  transition: background 0.2s;
+  font-weight: 700;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 12px 24px rgba(14, 165, 233, 0.24);
 }
 
 .link:hover {
-  background: #005cc5;
+  transform: translateY(-1px);
+  box-shadow: 0 16px 28px rgba(14, 165, 233, 0.3);
 }

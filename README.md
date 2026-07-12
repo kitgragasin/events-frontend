@@ -47,6 +47,7 @@ Copy `.env.example` to `.env` and set the variable:
 | Variable            | Required | Description                                          |
 | ------------------- | -------- | ---------------------------------------------------- |
 | `VITE_API_BASE_URL` | Yes      | Base URL of the backend API (no trailing slash). Example: `https://api.yourdomain.com` |
+| `VITE_API_KEY`      | Yes      | API key sent as the `x-api-key` header on authenticated requests. |
 
 > Vite exposes only variables prefixed with `VITE_` to the browser bundle.
 
@@ -103,18 +104,19 @@ Place the file at `public/.htaccess` in this repository. Vite will copy everythi
 
 ## Backend API Contract
 
-The frontend expects the following HTTP endpoint on the server pointed to by `VITE_API_BASE_URL`.
+The frontend expects the following HTTP endpoints on the server pointed to by `VITE_API_BASE_URL` and sends `x-api-key` when `VITE_API_KEY` is configured.
 
 ### Upload a photo
 
 ```
-POST /events/:eventCode/photos
+POST /photobooth/photos
 Content-Type: multipart/form-data
 ```
 
 | Field   | Type | Description                    |
 | ------- | ---- | ------------------------------ |
 | `photo` | File | The image file being uploaded. |
+| `eventID` | Text | The event identifier. |
 
 #### Success response
 
@@ -135,3 +137,27 @@ Content-Type: application/json
 ```
 
 The frontend displays the `message` field from error responses. Any non-2xx status code is treated as a failure.
+
+### List photos for an event
+
+```
+GET /photobooth/events/:eventID/photos
+```
+
+Use this for the event gallery page. The frontend then fetches each photo binary with `GET /photobooth/photos/:photoID` and converts it to a blob URL for display.
+
+### Fetch a photo binary
+
+```
+GET /photobooth/photos/:photoID
+```
+
+This returns the image bytes with the original MIME type.
+
+### Delete a photo
+
+```
+DELETE /photobooth/photos/:photoID
+```
+
+This is available for future admin tooling.
